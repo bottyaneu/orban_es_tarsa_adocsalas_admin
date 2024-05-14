@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('spending', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('description');
             $table->integer('price');
             $table->integer('tax_percentage');
             $table->timestamps();
