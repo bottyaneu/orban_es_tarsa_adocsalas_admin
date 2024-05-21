@@ -20,4 +20,14 @@ class JobController extends Controller
         $id->save();
         return redirect('dashboard');
     }
+
+    public function create(Request $request): RedirectResponse {
+        $data = $request->validate([
+            'description' => 'min:10|max:500',
+            'price' => 'numeric|min:10000|max:500000000',
+            'tax_percentage' => 'numeric|min:0|max:100',
+        ]);
+        $work = Work::create(array_merge($data, ['user_id' => auth()->user()->id, 'is_finished' => false]));
+        return redirect('dashboard');
+    }
 }

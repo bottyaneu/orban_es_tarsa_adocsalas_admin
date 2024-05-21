@@ -10,6 +10,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', [\App\Http\Controllers\JobController::class, 'index'])->name('dashboard');
     Route::put('/works/{id}', [\App\Http\Controllers\JobController::class, 'finish'])->name('works.finish');
+    Route::post('/works', [\App\Http\Controllers\JobController::class, 'create'])->name('works.create');
 });
 
 Route::middleware('auth')->group(function () {
