@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            Kezdőfelület
+            Munkák kezelése
         </h2>
     </x-slot>
 
@@ -17,17 +17,17 @@
                     <div class="my-3">
                         <x-input-label for="work_description" value="Munka leírása" />
                         <x-text-input placeholder="Pl.: Gázszerelés" id="work_description" name="description" class="mt-1 block w-full" />
-                        <x-input-error :messages="$errors->updatePassword->get('description')" class="mt-2" />
+                        <x-input-error :messages="$errors->first('description')" class="mt-2" />
                     </div>
                     <div class="my-3">
                         <x-input-label for="price" value="Ár" />
                         <x-text-input type="number" placeholder="Pl.: 100000 Ft" id="price" name="price" class="mt-1 block w-full" />
-                        <x-input-error :messages="$errors->updatePassword->get('price')" class="mt-2" />
+                        <x-input-error :messages="$errors->first('price')" class="mt-2" />
                     </div>
                     <div class="my-3">
                         <x-input-label for="tax_percentage" value="Adó százalék" />
                         <x-text-input placeholder="Pl.: 100000 Ft" id="tax_percentage" type="number" min="0" max="100" name="tax_percentage" class="mt-1 block w-full" />
-                        <x-input-error :messages="$errors->updatePassword->get('tax_percentage')" class="mt-2" />
+                        <x-input-error :messages="$errors->first('tax_percentage')" class="mt-2" />
                     </div>
                     <x-primary-button class="my-2">Létrehozás</x-primary-button>
                 </form>

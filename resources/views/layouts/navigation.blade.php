@@ -13,7 +13,13 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                       Kezdőfelület
+                    </x-nav-link>
+                    <x-nav-link :href="route('location.index')" :active="request()->routeIs('location.index')">
+                        Telephelyek
+                    </x-nav-link>
+                    <x-nav-link :href="route('location.index')" :active="request()->routeIs('location.index')">
+                        Költekezések
                     </x-nav-link>
                 </div>
             </div>

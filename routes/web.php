@@ -17,6 +17,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/location', [\App\Http\Controllers\LocationController::class, 'index'])->name('location.index');
+    Route::post('/location', [\App\Http\Controllers\LocationController::class, 'create'])->name('location.create');
+    Route::delete('/location/{id}', [\App\Http\Controllers\LocationController::class, 'destroy'])->name('location.delete');
+
+    Route::get('/spending', [\App\Http\Controllers\SpendingController::class, 'index'])->name('spending.index');
+    Route::post('/spending', [\App\Http\Controllers\SpendingController::class, 'create'])->name('spending.create');
+    Route::delete('/spending/{id}', [\App\Http\Controllers\SpendingController::class, 'destroy'])->name('spending.delete');
 });
 
 require __DIR__.'/auth.php';
