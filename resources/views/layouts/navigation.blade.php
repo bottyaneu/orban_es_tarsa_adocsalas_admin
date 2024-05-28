@@ -13,13 +13,16 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                       Kezdőfelület
+                        Kezdőfelület
+                    </x-nav-link>
+                    <x-nav-link :href="route('works.index')" :active="request()->routeIs('works.index')">
+                       Munkák
                     </x-nav-link>
                     <x-nav-link :href="route('location.index')" :active="request()->routeIs('location.index')">
                         Telephelyek
                     </x-nav-link>
-                    <x-nav-link :href="route('location.index')" :active="request()->routeIs('location.index')">
-                        Költekezések
+                    <x-nav-link :href="route('spending.index')" :active="request()->routeIs('spending.index')">
+                        Kiadások
                     </x-nav-link>
                 </div>
             </div>
@@ -74,8 +77,18 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+                Kezdőfelület
             </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('works.index')" :active="request()->routeIs('works.index')">
+                Munkák
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('location.index')" :active="request()->routeIs('location.index')">
+                Telephelyek
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('spending.index')" :active="request()->routeIs('spending.index')">
+                Kiadások
+            </x-responsive-nav-link>
+
         </div>
 
         <!-- Responsive Settings Options -->

@@ -12,7 +12,7 @@ class SpendingController extends Controller
 {
     public function index(): View {
         return view('spending', [
-            'spending' => Spending::all(),
+            'spending' => Spending::with('user')->get(),
         ]);
     }
 
@@ -23,10 +23,10 @@ class SpendingController extends Controller
 
     public function create(Request $request): RedirectResponse {
         $data = $request->validate([
+            'description' => 'min:10|max:500',
             'price' => 'numeric|min:10000|max:500000000',
             'tax_percentage' => 'numeric|min:0|max:100',
         ]);
-
         $data['user_id'] = auth()->user()->id;
         Spending::create($data);
         return Redirect::route('spending.index');

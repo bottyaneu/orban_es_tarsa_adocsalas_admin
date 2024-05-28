@@ -12,13 +12,13 @@ class JobController extends Controller
 {
     public function index(): View {
         $works = Work::where('created_at', '>=', Carbon::now()->startOfMonth())->with('user')->get();
-        return view('dashboard', ['works' => $works]);
+        return view('jobs', ['works' => $works]);
     }
 
     public function finish(Work $id): RedirectResponse {
         $id->is_finished = true;
         $id->save();
-        return redirect('dashboard');
+        return redirect('works.index');
     }
 
     public function create(Request $request): RedirectResponse {
@@ -27,7 +27,7 @@ class JobController extends Controller
             'price' => 'numeric|min:10000|max:500000000',
             'tax_percentage' => 'numeric|min:0|max:100',
         ]);
-        $work = Work::create(array_merge($data, ['user_id' => auth()->user()->id, 'is_finished' => false]));
-        return redirect('dashboard');
+        Work::create(array_merge($data, ['user_id' => auth()->user()->id, 'is_finished' => false]));
+        return redirect('works.index');
     }
 }
